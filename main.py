@@ -9,9 +9,16 @@ from datetime import datetime, timedelta
 
 app = FastAPI()
 
+import os
+
+origins = [
+    "http://localhost:5173",
+    os.environ.get("FRONTEND_URL", ""),  # Renderで環境変数として設定します
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -20,7 +27,7 @@ app.add_middleware(
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # --- JWT関連の設定 ---
-SECRET_KEY = "this-is-a-secret-key-change-later"
+SECRET_KEY = os.environ.get("SECRET_KEY", "this-is-a-secret-key-change-later")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 

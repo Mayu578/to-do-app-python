@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f7f8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* --- ログイン/登録フォーム --- */
+.auth-container {
+  max-width: 380px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+}
+
+.auth-container input {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.auth-container input:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.auth-container button:hover {
+  background: #333;
+}
+
+.auth-switch {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #666;
+}
+
+.auth-switch span {
+  color: #1a1a1a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.auth-error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin: -0.3rem 0 0.5rem;
+}
+
+/* --- Todoリスト画面 --- */
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.app-header button {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.app-header button:hover {
+  background: #f0f0f0;
+}
+
+.todo-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.todo-form input {
+  padding: 0.6rem;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  width: 260px;
+  font-size: 0.95rem;
+}
+
+.todo-form input:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.todo-form button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+}
+
+.todo-form button:hover {
+  background: #333;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.todo-item span {
+  flex: 1;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.todo-item button {
+  margin-left: 1rem;
+  padding: 0.35rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background: #f5f5f5;
+  color: #d32f2f;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.todo-item button:hover {
+  background: #fde8e8;
+}

@@ -1,0 +1,13 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Database
+todos.db
+
+# Node / React
+my-app-frontend/node_modules/
+
+# macOS
+.DS_Store

@@ -5,7 +5,7 @@ from sqlmodel import SQLModel, Field, Session, create_engine, select
 from typing import Optional, List
 from passlib.context import CryptContext
 from jose import jwt, JWTError
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 app = FastAPI()
 
@@ -56,10 +56,12 @@ class Todo(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     title: str
     done: bool = False
+    due_date: Optional[date] = None
     user_id: Optional[int] = Field(default=None, foreign_key="user.id")
 
 class TodoCreate(SQLModel):
     title: str
+    due_date: Optional[date] = None
 
 # --- アプリ起動時にテーブルを作成 ---
 @app.on_event("startup")
@@ -136,7 +138,7 @@ def get_todos(current_user: User = Depends(get_current_user)):
 @app.post("/todos", response_model=Todo)
 def create_todo(todo: TodoCreate, current_user: User = Depends(get_current_user)):
     with Session(engine) as session:
-        new_todo = Todo(title=todo.title, done=False, user_id=current_user.id)
+        new_todo = Todo(title=todo.title, done=False,due_date=todo.due_date, user_id=current_user.id)
         session.add(new_todo)
         session.commit()
         session.refresh(new_todo)

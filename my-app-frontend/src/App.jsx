@@ -14,6 +14,7 @@ function App() {
 
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   // ログイン済みならTodoを取得
   useEffect(() => {
@@ -75,12 +76,13 @@ function App() {
     }
   };
 
-  const addTodo = async () => {
-    if (title.trim() === "") return;
-    await axios.post(`${API_URL}/todos`, { title }, authHeader);
-    setTitle("");
-    fetchTodos();
-  };
+const addTodo = async () => {
+  if (title.trim() === "") return;
+  await axios.post(`${API_URL}/todos`, { title, due_date: dueDate || null }, authHeader);
+  setTitle("");
+  setDueDate("");
+  fetchTodos();
+};
 
   const toggleTodo = async (id) => {
     await axios.put(`${API_URL}/todos/${id}`, {}, authHeader);
@@ -165,10 +167,15 @@ function App() {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="新しいTodoを入力"
         />
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+        />
         <button onClick={addTodo}>追加</button>
       </div>
 
-      <ul className="todo-list">
+<ul className="todo-list">
         {todos.map((todo) => (
           <li key={todo.id} className="todo-item">
             <span
@@ -179,6 +186,11 @@ function App() {
               }}
             >
               {todo.title}
+              {todo.due_date && (
+                <span style={{ marginLeft: "0.6rem", fontSize: "0.8rem", color: "#888" }}>
+                  期限: {todo.due_date}
+                </span>
+              )}
             </span>
             <button onClick={() => deleteTodo(todo.id)}>削除</button>
           </li>

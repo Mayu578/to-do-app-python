@@ -35,7 +35,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 # --- データベースの設定 ---
-DATABASE_URL = "sqlite:///./todos.db"
+import os
+
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./todos.db")
 engine = create_engine(DATABASE_URL, echo=True)
 
 # --- テーブル定義 ---

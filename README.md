@@ -23,8 +23,8 @@ FastAPI + React + PostgreSQL(Neon) + JWT認証で作ったシンプルなTodoア
   \`\`\`bash
   source venv/bin/activate
   pip install -r requirements.txt
-# .envファイルにDATABASE_URLを設定するとPostgres(Neon)に接続されます
-# 未設定の場合はローカルのSQLite(todos.db)が使われます
+## .envファイルにDATABASE_URLを設定するとPostgres(Neon)に接続されます
+## 未設定の場合はローカルのSQLite(todos.db)が使われます
   uvicorn main:app --reload
   \`\`\`
 

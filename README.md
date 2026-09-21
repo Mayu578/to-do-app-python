@@ -1,12 +1,11 @@
 # Todo App (Python)
 
-FastAPI + React + SQLite + JWT認証で作ったシンプルなTodoアプリです。
+FastAPI + React + PostgreSQL(Neon) + JWT認証で作ったシンプルなTodoアプリです。
 
 ## デモ
 🔗 https://to-do-app-python-eight.vercel.app
 
 ※ 無料プランのため、しばらく操作がないとサーバーが休止し、再アクセス時に起動まで30秒〜1分ほどかかることがあります。
-※ 無料プランの制約上、データが定期的にリセットされる場合があります。
 
 ## 機能
 - ユーザー登録・ログイン（JWT認証）
@@ -14,17 +13,20 @@ FastAPI + React + SQLite + JWT認証で作ったシンプルなTodoアプリで�
 - ユーザーごとにTodoを管理
 
 ## 技術スタック
-- Backend: FastAPI, SQLModel, SQLite
-- Frontend: React, Vite, axios
+- Backend: FastAPI, SQLModel, PostgreSQL (Neon)
+- Frontend: React, Vite, axios(API通信)
 
 ## 起動方法
 
 ### バックエンド
-\`\`\`bash
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-\`\`\`
+  ### バックエンド
+  \`\`\`bash
+  source venv/bin/activate
+  pip install -r requirements.txt
+# .envファイルにDATABASE_URLを設定するとPostgres(Neon)に接続されます
+# 未設定の場合はローカルのSQLite(todos.db)が使われます
+  uvicorn main:app --reload
+  \`\`\`
 
 ### フロントエンド
 \`\`\`bash
@@ -33,26 +35,6 @@ npm install
 npm run dev
 \`\`\`
 
-## 今後の展望・現状の課題
-
-現時点では学習・ポートフォリオ用のプロトタイプとして開発しており、実際のプロダクトとして提供するには以下の課題があると認識しています。
-
-### 信頼性・データ管理
-- Renderの無料プランを使用しているため、再デプロイ時にデータがリセットされる場合がある
-- バックアップ・データ復元の仕組みがない
-
-### セキュリティ
-- パスワードリセット機能が未実装
-- メールアドレスの確認（verification）フローがない
-- トークン失効後の再ログイン導線が未整備
-
-### プロダクトとしての差別化
-- 現状は基本的なCRUD機能のみで、Todoist・Notionなど既存サービスとの差別化要素がない
-- リマインダー通知、チーム共有機能などが未実装
-
-### 運用面
-- エラー監視（Sentryなど）が未導入
-- アクセス解析・利用状況の可視化ができていない
-- 負荷テストが未実施
-
-今後、これらの課題に優先順位をつけながら段階的に改善していきたいと考えています。まずはコードの構造改善（責務の分離）やテストコードの追加から着手する予定です。
+## 制作目的
+ 
+React と Python(FastAPI)の学習を目的に作成したアプリです。CRUD操作とJWT認証という基本的な機能のみを実装したシンプルな構成にしています。
